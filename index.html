@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Классификатор изображений</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Классификатор изображений</h1>
+      <p class="subtitle">Загрузите картинку — модель определит класс</p>
+    </header>
+
+    <main class="card">
+      <div class="upload-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <div class="upload-placeholder" id="placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          <p>Перетащите изображение сюда</p>
+          <span>или нажмите, чтобы выбрать файл</span>
+        </div>
+        <img id="preview" class="preview hidden" alt="Превью" />
+      </div>
+
+      <div class="actions">
+        <button id="clearBtn" class="btn btn-secondary" disabled>Очистить</button>
+        <button id="predictBtn" class="btn btn-primary" disabled>
+          <span class="btn-text">Определить класс</span>
+          <span class="btn-loader hidden"></span>
+        </button>
+      </div>
+
+      <div id="result" class="result hidden">
+        <div class="result-label" id="resultLabel">—</div>
+        <div class="confidences" id="confidences"></div>
+      </div>
+
+      <div id="error" class="error hidden"></div>
+    </main>
+
+    <footer>
+      <p>
+        Модель подключена через Gradio API ·
+        <a href="https://cc69d162143324ac08.gradio.live/" target="_blank" rel="noopener">оригинальный демо</a>
+      </p>
+      <p class="note">
+        Share-ссылка Gradio временная (~72 ч). Для постоянного хостинга нужен код/веса модели.
+      </p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
